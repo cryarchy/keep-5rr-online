@@ -1,0 +1,13 @@
+[package]
+name = "keep-5rr-online"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+figment = { version = "0.10.19", features = ["yaml"] }
+flexi_logger = "0.31.8"
+headless_chrome = "1.0.21"
+log = "0.4.29"
+rand = "0.10.1"
+serde = { version = "1.0.228", features = ["derive"] }
