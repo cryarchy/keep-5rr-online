@@ -24,9 +24,8 @@ impl CustomBrowser {
         let mut site_tab = None;
 
         for tab in tabs.iter() {
-            if tab.get_url().contains(&config.site_name) {
+            if tab.get_url().contains(&config.site_name) && site_tab.is_none() {
                 site_tab = Some(tab.clone());
-                break;
             } else {
                 tab.close(false)?;
             }
