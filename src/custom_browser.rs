@@ -1,6 +1,7 @@
 use anyhow::{Result, anyhow};
 use headless_chrome::{Browser, Tab};
 use std::sync::Arc;
+use std::thread::sleep;
 use std::time::Duration;
 
 use crate::app_config::AppConfig;
@@ -27,7 +28,9 @@ impl CustomBrowser {
             if tab.get_url().contains(&config.site_name) && site_tab.is_none() {
                 site_tab = Some(tab.clone());
             } else {
-                tab.close(false)?;
+                if let Err(e) = tab.close(false) {
+                    log::error!("Error closing tab with url '{}': {e}", tab.get_url());
+                }
             }
         }
 
